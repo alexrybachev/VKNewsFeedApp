@@ -56,15 +56,47 @@
 		281A4CCB28B7DD6700E6ADBC /* VKNewsFeedApp */ = {
 			isa = PBXGroup;
 			children = (
-				281A4CCC28B7DD6700E6ADBC /* AppDelegate.swift */,
-				281A4CCE28B7DD6700E6ADBC /* SceneDelegate.swift */,
-				281A4CD028B7DD6700E6ADBC /* ViewController.swift */,
-				281A4CD228B7DD6700E6ADBC /* Main.storyboard */,
-				281A4CD528B7DD6800E6ADBC /* Assets.xcassets */,
-				281A4CD728B7DD6800E6ADBC /* LaunchScreen.storyboard */,
-				281A4CDA28B7DD6800E6ADBC /* Info.plist */,
+				281A4CE028B7DEEC00E6ADBC /* App */,
+				281A4CE228B7DF2E00E6ADBC /* ViewControllers */,
+				281A4CE128B7DF2500E6ADBC /* Storyboards */,
+				281A4CE328B7DF3600E6ADBC /* Resources */,
 			);
 			path = VKNewsFeedApp;
+			sourceTree = "<group>";
+		};
+		281A4CE028B7DEEC00E6ADBC /* App */ = {
+			isa = PBXGroup;
+			children = (
+				281A4CCC28B7DD6700E6ADBC /* AppDelegate.swift */,
+				281A4CCE28B7DD6700E6ADBC /* SceneDelegate.swift */,
+				281A4CDA28B7DD6800E6ADBC /* Info.plist */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		281A4CE128B7DF2500E6ADBC /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				281A4CD228B7DD6700E6ADBC /* Main.storyboard */,
+				281A4CD728B7DD6800E6ADBC /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		281A4CE228B7DF2E00E6ADBC /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				281A4CD028B7DD6700E6ADBC /* ViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		281A4CE328B7DF3600E6ADBC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				281A4CD528B7DD6800E6ADBC /* Assets.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -289,7 +321,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6P96P67U8G;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = VKNewsFeedApp/Info.plist;
+				INFOPLIST_FILE = VKNewsFeedApp/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -304,7 +336,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -317,7 +349,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6P96P67U8G;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = VKNewsFeedApp/Info.plist;
+				INFOPLIST_FILE = VKNewsFeedApp/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -332,7 +364,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
