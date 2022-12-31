@@ -26,8 +26,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        window?.windowScene = windowScene
         authService = AuthService()
         authService.delegate = self
-        let authVC = UIStoryboard(name: "AuthViewController", bundle: nil).instantiateInitialViewController() as? AuthViewController
-//        let authVC: AuthViewController = AuthViewController.loadFromStoryboard()
+//        let authVC = UIStoryboard(name: "AuthViewController", bundle: nil).instantiateInitialViewController() as? AuthViewController
+        let authVC: AuthViewController = AuthViewController.loadFromStoryboard()
         window?.rootViewController = authVC
         window?.makeKeyAndVisible()
         
@@ -79,13 +79,15 @@ extension SceneDelegate: AuthServiceDelegate {
     
     func authServiceSignIn() {
         print(#function)
-        if let feedVC = UIStoryboard(name: "FeedViewController", bundle: nil).instantiateInitialViewController() as? FeedViewController {
-            let navVC = UINavigationController(rootViewController: feedVC)
-            window?.rootViewController = navVC
-        } else {
-            print("something happend wrong")
-        }
-        //        let feedVC: FeedViewController = FeedViewController.loadFromStoryboard()
+//        if let feedVC = UIStoryboard(name: "FeedViewController", bundle: nil).instantiateInitialViewController() as? FeedViewController {
+//            let navVC = UINavigationController(rootViewController: feedVC)
+//            window?.rootViewController = navVC
+//        } else {
+//            print("something happend wrong")
+//        }
+                let feedVC: FeedViewController = FeedViewController.loadFromStoryboard()
+        let navVC = UINavigationController(rootViewController: feedVC)
+        window?.rootViewController = navVC
     }
     
     func authServiceSignInDidFail() {
