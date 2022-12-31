@@ -12,13 +12,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
     var authService: AuthService!
+    
+    static func shared() -> SceneDelegate {
+        let scene = UIApplication.shared.connectedScenes.first
+        let sceneDelegate: SceneDelegate = ((scene?.delegate as! SceneDelegate))
+        return sceneDelegate
+    }
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        window = UIWindow(frame: windowScene.coordinateSpace.bounds)
-        window?.windowScene = windowScene
+        window = UIWindow(windowScene: windowScene)
+//        window = UIWindow(frame: windowScene.coordinateSpace.bounds)
+//        window?.windowScene = windowScene
         authService = AuthService()
+        authService.delegate = self
         let authVC = UIStoryboard(name: "AuthViewController", bundle: nil).instantiateInitialViewController() as? AuthViewController
+//        let authVC: AuthViewController = AuthViewController.loadFromStoryboard()
         window?.rootViewController = authVC
         window?.makeKeyAndVisible()
         
@@ -58,6 +67,29 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
     }
 
+}
 
+// MARK: - AuthServiceDelegate
+extension SceneDelegate: AuthServiceDelegate {
+    
+    func authServiceShouldShow(_ viewController: UIViewController) {
+        print(#function)
+        window?.rootViewController?.present(viewController, animated: true)
+    }
+    
+    func authServiceSignIn() {
+        print(#function)
+        if let feedVC = UIStoryboard(name: "FeedViewController", bundle: nil).instantiateInitialViewController() as? FeedViewController {
+            let navVC = UINavigationController(rootViewController: feedVC)
+            window?.rootViewController = navVC
+        } else {
+            print("something happend wrong")
+        }
+        //        let feedVC: FeedViewController = FeedViewController.loadFromStoryboard()
+    }
+    
+    func authServiceSignInDidFail() {
+        print(#function)
+    }
 }
 

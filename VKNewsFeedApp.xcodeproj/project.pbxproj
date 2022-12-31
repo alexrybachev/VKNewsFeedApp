@@ -14,6 +14,9 @@
 		281A4CD928B7DD6800E6ADBC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 281A4CD728B7DD6800E6ADBC /* LaunchScreen.storyboard */; };
 		28B1D98728B7E73F006BCCC6 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1D98628B7E73F006BCCC6 /* AuthService.swift */; };
 		28B1D98A28B7E921006BCCC6 /* AuthViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28B1D98928B7E921006BCCC6 /* AuthViewController.storyboard */; };
+		28C9105E295F676300B44962 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C9105D295F676300B44962 /* FeedViewController.swift */; };
+		28C91060295F677900B44962 /* FeedViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28C9105F295F677900B44962 /* FeedViewController.storyboard */; };
+		28C9106529606CF400B44962 /* UIViewController+Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C9106429606CF400B44962 /* UIViewController+Storyboard.swift */; };
 		AE89AAD7EBA5A23A90E910B5 /* Pods_VKNewsFeedApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B07A5364541F66BB81E31BD /* Pods_VKNewsFeedApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +30,9 @@
 		281A4CDA28B7DD6800E6ADBC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		28B1D98628B7E73F006BCCC6 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		28B1D98928B7E921006BCCC6 /* AuthViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AuthViewController.storyboard; sourceTree = "<group>"; };
+		28C9105D295F676300B44962 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		28C9105F295F677900B44962 /* FeedViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FeedViewController.storyboard; sourceTree = "<group>"; };
+		28C9106429606CF400B44962 /* UIViewController+Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Storyboard.swift"; sourceTree = "<group>"; };
 		3B07A5364541F66BB81E31BD /* Pods_VKNewsFeedApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VKNewsFeedApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D4E2DB44281387E8004E91B /* Pods-VKNewsFeedApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VKNewsFeedApp.release.xcconfig"; path = "Target Support Files/Pods-VKNewsFeedApp/Pods-VKNewsFeedApp.release.xcconfig"; sourceTree = "<group>"; };
 		B60F83D63DD9E409D6887A8F /* Pods-VKNewsFeedApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VKNewsFeedApp.debug.xcconfig"; path = "Target Support Files/Pods-VKNewsFeedApp/Pods-VKNewsFeedApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -67,7 +73,10 @@
 			children = (
 				281A4CE028B7DEEC00E6ADBC /* App */,
 				28B1D98828B7E74B006BCCC6 /* Services */,
+				28C91061295F682000B44962 /* AuthViewController */,
+				28C91062295F683100B44962 /* FeedViewController */,
 				281A4CE228B7DF2E00E6ADBC /* ViewControllers */,
+				28C9106329606CCF00B44962 /* Helpers */,
 				281A4CE128B7DF2500E6ADBC /* Storyboards */,
 				281A4CE328B7DF3600E6ADBC /* Resources */,
 			);
@@ -95,8 +104,6 @@
 		281A4CE228B7DF2E00E6ADBC /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				281A4CD028B7DD6700E6ADBC /* AuthViewController.swift */,
-				28B1D98928B7E921006BCCC6 /* AuthViewController.storyboard */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -115,6 +122,32 @@
 				28B1D98628B7E73F006BCCC6 /* AuthService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		28C91061295F682000B44962 /* AuthViewController */ = {
+			isa = PBXGroup;
+			children = (
+				281A4CD028B7DD6700E6ADBC /* AuthViewController.swift */,
+				28B1D98928B7E921006BCCC6 /* AuthViewController.storyboard */,
+			);
+			path = AuthViewController;
+			sourceTree = "<group>";
+		};
+		28C91062295F683100B44962 /* FeedViewController */ = {
+			isa = PBXGroup;
+			children = (
+				28C9105D295F676300B44962 /* FeedViewController.swift */,
+				28C9105F295F677900B44962 /* FeedViewController.storyboard */,
+			);
+			path = FeedViewController;
+			sourceTree = "<group>";
+		};
+		28C9106329606CCF00B44962 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				28C9106429606CF400B44962 /* UIViewController+Storyboard.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		5A4BA9B63F3261D17590CAB4 /* Pods */ = {
@@ -197,6 +230,7 @@
 				281A4CD928B7DD6800E6ADBC /* LaunchScreen.storyboard in Resources */,
 				28B1D98A28B7E921006BCCC6 /* AuthViewController.storyboard in Resources */,
 				281A4CD628B7DD6800E6ADBC /* Assets.xcassets in Resources */,
+				28C91060295F677900B44962 /* FeedViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,8 +285,10 @@
 			files = (
 				281A4CD128B7DD6700E6ADBC /* AuthViewController.swift in Sources */,
 				281A4CCD28B7DD6700E6ADBC /* AppDelegate.swift in Sources */,
+				28C9105E295F676300B44962 /* FeedViewController.swift in Sources */,
 				281A4CCF28B7DD6700E6ADBC /* SceneDelegate.swift in Sources */,
 				28B1D98728B7E73F006BCCC6 /* AuthService.swift in Sources */,
+				28C9106529606CF400B44962 /* UIViewController+Storyboard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,8 +433,8 @@
 				INFOPLIST_FILE = VKNewsFeedApp/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -425,8 +461,8 @@
 				INFOPLIST_FILE = VKNewsFeedApp/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
