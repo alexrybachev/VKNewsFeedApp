@@ -19,6 +19,8 @@
 		28C9106529606CF400B44962 /* UIViewController+Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C9106429606CF400B44962 /* UIViewController+Storyboard.swift */; };
 		28C910672960790400B44962 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C910662960790400B44962 /* NetworkService.swift */; };
 		28C910692960799800B44962 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C910682960799800B44962 /* API.swift */; };
+		28C9106E2960946E00B44962 /* FeedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C9106D2960946E00B44962 /* FeedResponse.swift */; };
+		28C910702960981700B44962 /* NetworkDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C9106F2960981700B44962 /* NetworkDataFetcher.swift */; };
 		AE89AAD7EBA5A23A90E910B5 /* Pods_VKNewsFeedApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B07A5364541F66BB81E31BD /* Pods_VKNewsFeedApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +39,8 @@
 		28C9106429606CF400B44962 /* UIViewController+Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Storyboard.swift"; sourceTree = "<group>"; };
 		28C910662960790400B44962 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		28C910682960799800B44962 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		28C9106D2960946E00B44962 /* FeedResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedResponse.swift; sourceTree = "<group>"; };
+		28C9106F2960981700B44962 /* NetworkDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataFetcher.swift; sourceTree = "<group>"; };
 		3B07A5364541F66BB81E31BD /* Pods_VKNewsFeedApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VKNewsFeedApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D4E2DB44281387E8004E91B /* Pods-VKNewsFeedApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VKNewsFeedApp.release.xcconfig"; path = "Target Support Files/Pods-VKNewsFeedApp/Pods-VKNewsFeedApp.release.xcconfig"; sourceTree = "<group>"; };
 		B60F83D63DD9E409D6887A8F /* Pods-VKNewsFeedApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VKNewsFeedApp.debug.xcconfig"; path = "Target Support Files/Pods-VKNewsFeedApp/Pods-VKNewsFeedApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -76,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				281A4CE028B7DEEC00E6ADBC /* App */,
+				28C9106C2960945C00B44962 /* Models */,
 				28B1D98828B7E74B006BCCC6 /* Services */,
 				28C91061295F682000B44962 /* AuthViewController */,
 				28C91062295F683100B44962 /* FeedViewController */,
@@ -118,6 +123,7 @@
 				28B1D98628B7E73F006BCCC6 /* AuthService.swift */,
 				28C910662960790400B44962 /* NetworkService.swift */,
 				28C910682960799800B44962 /* API.swift */,
+				28C9106F2960981700B44962 /* NetworkDataFetcher.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -146,6 +152,14 @@
 				28C9106429606CF400B44962 /* UIViewController+Storyboard.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		28C9106C2960945C00B44962 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				28C9106D2960946E00B44962 /* FeedResponse.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		5A4BA9B63F3261D17590CAB4 /* Pods */ = {
@@ -285,9 +299,11 @@
 				281A4CCD28B7DD6700E6ADBC /* AppDelegate.swift in Sources */,
 				28C9105E295F676300B44962 /* FeedViewController.swift in Sources */,
 				281A4CCF28B7DD6700E6ADBC /* SceneDelegate.swift in Sources */,
+				28C910702960981700B44962 /* NetworkDataFetcher.swift in Sources */,
 				28B1D98728B7E73F006BCCC6 /* AuthService.swift in Sources */,
 				28C9106529606CF400B44962 /* UIViewController+Storyboard.swift in Sources */,
 				28C910692960799800B44962 /* API.swift in Sources */,
+				28C9106E2960946E00B44962 /* FeedResponse.swift in Sources */,
 				28C910672960790400B44962 /* NetworkService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -40,6 +40,7 @@ class AuthService: NSObject, VKSdkDelegate, VKSdkUIDelegate {
                      "wall",
                      "friends",
                      "groups"]
+        
         VKSdk.wakeUpSession(scope) { [delegate] (state, error) in
             switch state {
             case .authorized:
