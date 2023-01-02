@@ -33,6 +33,7 @@ class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
         viewController.router     = router
         interactor.presenter      = presenter
         presenter.viewController  = viewController
+//        presenter.cellLayoutCalculator = FeedCellLayoutCalculator(screenWidth: <#T##CGFloat#>)
         router.viewController     = viewController
     }
     
