@@ -85,7 +85,7 @@ extension SceneDelegate: AuthServiceDelegate {
 //        } else {
 //            print("something happend wrong")
 //        }
-        let feedVC: FeedViewController = FeedViewController.loadFromStoryboard()
+        let feedVC: NewsfeedViewController = NewsfeedViewController.loadFromStoryboard()
         let navVC = UINavigationController(rootViewController: feedVC)
         window?.rootViewController = navVC
     }

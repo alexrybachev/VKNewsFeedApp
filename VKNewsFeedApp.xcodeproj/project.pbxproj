@@ -27,7 +27,7 @@
 		28C9107C29609E4400B44962 /* NewsfeedModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C9107529609E4400B44962 /* NewsfeedModels.swift */; };
 		28C9107D29609E4400B44962 /* NewsfeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C9107629609E4400B44962 /* NewsfeedViewController.swift */; };
 		28C9107E29609E4400B44962 /* NewsfeedInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C9107729609E4400B44962 /* NewsfeedInteractor.swift */; };
-		28C9107F29609E4400B44962 /* NewsfeedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28C9107829609E4400B44962 /* NewsfeedViewController.xib */; };
+		28C910812962F93C00B44962 /* NewsfeedViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28C910802962F93C00B44962 /* NewsfeedViewController.storyboard */; };
 		AE89AAD7EBA5A23A90E910B5 /* Pods_VKNewsFeedApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B07A5364541F66BB81E31BD /* Pods_VKNewsFeedApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -54,7 +54,7 @@
 		28C9107529609E4400B44962 /* NewsfeedModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsfeedModels.swift; sourceTree = "<group>"; };
 		28C9107629609E4400B44962 /* NewsfeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsfeedViewController.swift; sourceTree = "<group>"; };
 		28C9107729609E4400B44962 /* NewsfeedInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsfeedInteractor.swift; sourceTree = "<group>"; };
-		28C9107829609E4400B44962 /* NewsfeedViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsfeedViewController.xib; sourceTree = "<group>"; };
+		28C910802962F93C00B44962 /* NewsfeedViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewsfeedViewController.storyboard; sourceTree = "<group>"; };
 		3B07A5364541F66BB81E31BD /* Pods_VKNewsFeedApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VKNewsFeedApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D4E2DB44281387E8004E91B /* Pods-VKNewsFeedApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VKNewsFeedApp.release.xcconfig"; path = "Target Support Files/Pods-VKNewsFeedApp/Pods-VKNewsFeedApp.release.xcconfig"; sourceTree = "<group>"; };
 		B60F83D63DD9E409D6887A8F /* Pods-VKNewsFeedApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VKNewsFeedApp.debug.xcconfig"; path = "Target Support Files/Pods-VKNewsFeedApp/Pods-VKNewsFeedApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -180,7 +180,7 @@
 		28C9107129609E0D00B44962 /* NewsFeed */ = {
 			isa = PBXGroup;
 			children = (
-				28C9107829609E4400B44962 /* NewsfeedViewController.xib */,
+				28C910802962F93C00B44962 /* NewsfeedViewController.storyboard */,
 				28C9107629609E4400B44962 /* NewsfeedViewController.swift */,
 				28C9107729609E4400B44962 /* NewsfeedInteractor.swift */,
 				28C9107229609E4400B44962 /* NewsfeedPresenter.swift */,
@@ -270,7 +270,7 @@
 			files = (
 				281A4CD928B7DD6800E6ADBC /* LaunchScreen.storyboard in Resources */,
 				28B1D98A28B7E921006BCCC6 /* AuthViewController.storyboard in Resources */,
-				28C9107F29609E4400B44962 /* NewsfeedViewController.xib in Resources */,
+				28C910812962F93C00B44962 /* NewsfeedViewController.storyboard in Resources */,
 				281A4CD628B7DD6800E6ADBC /* Assets.xcassets in Resources */,
 				28C91060295F677900B44962 /* FeedViewController.storyboard in Resources */,
 			);
