@@ -46,6 +46,9 @@ class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
         super.viewDidLoad()
         setup()
         table.register(UINib(nibName: "NewsfeedCell", bundle: nil), forCellReuseIdentifier: NewsfeedCell.reuseId)
+        table.separatorStyle = .none
+        table.backgroundColor = .clear
+        view.backgroundColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
         interactor?.makeRequest(request: .getNewsfeed)
     }
     
