@@ -26,6 +26,7 @@ struct FeedItem: Codable {
     let likes: CountableItem?
     let reposts: CountableItem?
     let views: CountableItem?
+    let attachments: [Attachment]?
 }
 
 struct CountableItem: Codable {
@@ -54,4 +55,41 @@ struct Group: Codable, ProfileRepresentable {
     let photo100: String
     
     var photo: String { photo100 }
+}
+
+struct Attachment: Codable {
+    let photo: Photo?
+}
+
+struct Photo: Codable {
+    let sizes: [PhotoSize]
+    
+    var height: Int {
+        return getPropperSize().height
+    }
+    
+    var width: Int {
+        getPropperSize().height
+    }
+    
+    var srcBIG: String {
+        getPropperSize().url
+    }
+    
+    private func getPropperSize() -> PhotoSize {
+        if let sizeX = sizes.first(where: { $0.type == "x" }) {
+            return sizeX
+        } else if let fallBackSize = sizes.last {
+            return fallBackSize
+        } else {
+            return PhotoSize(type: "wrong image", url: "wrong image", width: 0, height: 0)
+        }
+    }
+}
+
+struct PhotoSize: Codable {
+    let type: String
+    let url: String
+    let width: Int
+    let height: Int
 }
