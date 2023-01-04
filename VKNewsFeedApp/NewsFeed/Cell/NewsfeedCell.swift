@@ -30,6 +30,8 @@ protocol FeedCellPhotoAttachmentViewModel {
 protocol FeedCellSizes {
     var postLabelFrame: CGRect { get }
     var attachmentFrame: CGRect { get }
+    var bottomView: CGRect { get }
+    var totalHeight: CGFloat { get }
 }
 
 class NewsfeedCell: UITableViewCell {
@@ -45,6 +47,8 @@ class NewsfeedCell: UITableViewCell {
     @IBOutlet weak var postLabel: UILabel!
     
     @IBOutlet weak var postImageView: WebImageView!
+    
+    @IBOutlet weak var bottomView: UIView!
     
     @IBOutlet weak var likesLabel: UILabel!
     @IBOutlet weak var commentsLabel: UILabel!
@@ -87,6 +91,8 @@ class NewsfeedCell: UITableViewCell {
         
         postLabel.frame = viewModel.sizes.postLabelFrame
         postImageView.frame = viewModel.sizes.attachmentFrame
+        bottomView.frame = viewModel.sizes.bottomView
+    
         
         if let photoAttachment = viewModel.photoAttachment {
             postImageView.set(imageURL: photoAttachment.photoURLString)
