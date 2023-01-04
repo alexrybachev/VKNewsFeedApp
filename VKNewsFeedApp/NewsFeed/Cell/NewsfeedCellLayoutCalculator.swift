@@ -15,7 +15,7 @@ protocol FeedCellLayoutCalculatorProtocol {
 struct Sizes: FeedCellSizes {
     var postLabelFrame: CGRect
     var attachmentFrame: CGRect
-    var bottomView: CGRect
+    var bottomViewFrame: CGRect
     var totalHeight: CGFloat
 }
 
@@ -24,6 +24,7 @@ struct Constanst {
     static let topViewHeight: CGFloat = 36
     static let postLabelInsert = UIEdgeInsets(top: 8 + Self.topViewHeight, left: 8, bottom: 8, right: 8)
     static let postLabelFont = UIFont.systemFont(ofSize: 15)
+    static let bottomViewHeight: CGFloat = 44
 }
 
 final class FeedCellLayoutCalculator: FeedCellLayoutCalculatorProtocol {
@@ -50,11 +51,34 @@ final class FeedCellLayoutCalculator: FeedCellLayoutCalculatorProtocol {
         
         // MARK: - Work with attachmentFrame
         
+        let attachmentTop = postLabelFrame.size == CGSize.zero ? Constanst.postLabelInsert.top : postLabelFrame.maxY + Constanst.postLabelInsert.bottom
+        
+        var attachmentFrame = CGRect(origin: CGPoint(x: 0, y: attachmentTop),
+                                    size: CGSize.zero)
+        if let attachment = photoAttachment {
+            let photoHeight: Float = Float(attachment.height)
+            let photoWidth: Float = Float(attachment.width)
+            let ratio = CGFloat(photoHeight / photoWidth)
+            attachmentFrame.size = CGSize(width: cardViewWidth,
+                                         height: cardViewWidth * ratio)
+        }
+        
+        // MARK: - Work with bottomViewFrame
+        
+        let bottomViewTop = max(postLabelFrame.maxY, attachmentFrame.maxY)
+        
+        let bottomViewFrame = CGRect(origin: CGPoint(x: 0, y: bottomViewTop),
+                                     size: CGSize(width: cardViewWidth, height: Constanst.bottomViewHeight))
+        
+        // MARK: - Work with totalHeightFrame
+        
+        let totalHeight = bottomViewFrame.maxY + Constanst.cardInsets.bottom
+        
         return Sizes(
             postLabelFrame: postLabelFrame,
-            attachmentFrame: CGRect.zero,
-            bottomView: CGRect.zero,
-            totalHeight: 200
+            attachmentFrame: attachmentFrame,
+            bottomViewFrame: bottomViewFrame,
+            totalHeight: totalHeight
         )
     }
 }
