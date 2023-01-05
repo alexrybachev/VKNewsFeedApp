@@ -73,12 +73,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 extension SceneDelegate: AuthServiceDelegate {
     
     func authServiceShouldShow(_ viewController: UIViewController) {
-        print(#function)
+//        print(#function)
         window?.rootViewController?.present(viewController, animated: true)
     }
     
     func authServiceSignIn() {
-        print(#function)
+//        print(#function)
 //        if let feedVC = UIStoryboard(name: "FeedViewController", bundle: nil).instantiateInitialViewController() as? FeedViewController {
 //            let navVC = UINavigationController(rootViewController: feedVC)
 //            window?.rootViewController = navVC
@@ -91,7 +91,7 @@ extension SceneDelegate: AuthServiceDelegate {
     }
     
     func authServiceSignInDidFail() {
-        print(#function)
+//        print(#function)
     }
 }
 
