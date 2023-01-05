@@ -64,6 +64,7 @@ class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
 }
 
 // MARK: - UITableViewDataSource
+
 extension NewsfeedViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -75,6 +76,7 @@ extension NewsfeedViewController: UITableViewDataSource {
         let cell = table.dequeueReusableCell(withIdentifier: NewsfeedCodeCell.reuseId, for: indexPath) as! NewsfeedCodeCell
         let cellViewModel = feedViewModel.cells[indexPath.row]
         cell.set(viewModel: cellViewModel)
+        cell.delegate = self
         return cell
     }
     
@@ -85,11 +87,21 @@ extension NewsfeedViewController: UITableViewDataSource {
 }
 
 // MARK: - UITableViewDelegate
+
 extension NewsfeedViewController: UITableViewDelegate {
     
 //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        print("select row")
 //        interactor?.makeRequest(request: .getFeed)
 //    }
+}
+
+// MARK: - NewsfeedCodeCellDelegate
+
+extension NewsfeedViewController: NewsfeedCodeCellDelegate {
+    
+    func revealPost(for cell: NewsfeedCodeCell) {
+        print("123 delegate")
+    }
 }
 

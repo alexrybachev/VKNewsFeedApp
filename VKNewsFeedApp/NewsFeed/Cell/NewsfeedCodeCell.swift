@@ -8,9 +8,15 @@
 import Foundation
 import UIKit
 
+protocol NewsfeedCodeCellDelegate: AnyObject {
+    func revealPost(for cell: NewsfeedCodeCell)
+}
+
 final class NewsfeedCodeCell: UITableViewCell {
     
     static let reuseId = "NewsfeedCodeCell"
+    
+    weak var delegate: NewsfeedCodeCellDelegate?
     
     // первый слой
     
@@ -39,6 +45,16 @@ final class NewsfeedCodeCell: UITableViewCell {
         return label
     }()
     
+    let moreTextButton: UIButton = {
+       let button = UIButton()
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .medium)
+        button.setTitleColor(UIColor.blue, for: .normal)
+        button.contentHorizontalAlignment = .left
+        button.contentVerticalAlignment = .center
+        button.setTitle("Показать полностью...", for: .normal)
+        return button
+    }()
+    
     let postImageView: WebImageView = {
         let view = WebImageView()
         return view
@@ -54,8 +70,6 @@ final class NewsfeedCodeCell: UITableViewCell {
     let iconImageView: WebImageView = {
         let view = WebImageView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.layer.cornerRadius = view.frame.width / 2
-        view.clipsToBounds = true
         return view
     }()
     
@@ -170,17 +184,28 @@ final class NewsfeedCodeCell: UITableViewCell {
     
     
     // MARK: - Life Cycle
+    
+    override func prepareForReuse() {
+        iconImageView.set(imageURL: nil)
+        postImageView.set(imageURL: nil)
+    }
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         backgroundColor = .clear
         selectionStyle = .none
         
+        iconImageView.layer.cornerRadius = Constanst.topViewHeight / 2
+        iconImageView.clipsToBounds = true
+        
         overlayFirstLayer() // первый слой
         overlaySecondLayer() // второй слой
         overlayThirdLayerOnTopView() // третий слой на topView
         overlayThirdLayerOnBottomView() // третий слой на bottomView
         overlayFourthLayerOnBottomView() // четвертый слой на bottomView
+        
+        moreTextButton.addTarget(self, action: #selector(moreTextButtonTouch), for: .touchUpInside)
     }
     
     required init?(coder: NSCoder) {
@@ -189,13 +214,14 @@ final class NewsfeedCodeCell: UITableViewCell {
     
     // MARK: - Methods
     private func overlayFirstLayer() {
-        addSubview(cardView)
+        contentView.addSubview(cardView)
         cardView.fillSuperview(padding: Constanst.cardInsets)
     }
     
     private func overlaySecondLayer() {
         cardView.addSubview(topView)
         cardView.addSubview(postLabel)
+        cardView.addSubview(moreTextButton)
         cardView.addSubview(postImageView)
         cardView.addSubview(bottomView)
         
@@ -303,7 +329,7 @@ final class NewsfeedCodeCell: UITableViewCell {
         postLabel.frame = viewModel.sizes.postLabelFrame
         postImageView.frame = viewModel.sizes.attachmentFrame
         bottomView.frame = viewModel.sizes.bottomViewFrame
-        
+        moreTextButton.frame = viewModel.sizes.moreTextButtonFrame
         
         if let photoAttachment = viewModel.photoAttachment {
             postImageView.set(imageURL: photoAttachment.photoURLString)
@@ -311,6 +337,10 @@ final class NewsfeedCodeCell: UITableViewCell {
         } else {
             postImageView.isHidden = true
         }
+    }
+    
+    @objc private func moreTextButtonTouch() {
+        delegate?.revealPost(for: self)
     }
     
 }
