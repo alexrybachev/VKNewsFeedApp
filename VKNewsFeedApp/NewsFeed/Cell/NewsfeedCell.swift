@@ -17,7 +17,7 @@ protocol FeedCellViewModel {
     var comments: String? { get }
     var shares: String? { get }
     var views: String? { get }
-    var photoAttachment: FeedCellPhotoAttachmentViewModel? { get }
+    var photoAttachments: [FeedCellPhotoAttachmentViewModel] { get }
     var sizes: FeedCellSizes { get }
 }
 
@@ -74,38 +74,38 @@ class NewsfeedCell: UITableViewCell {
 //        selectionStyle = .none
     }
     
-    func set(viewModel: FeedCellViewModel) {
-        iconImageView.set(imageURL: viewModel.iconURLString)
-        
-        iconImageView.layer.cornerRadius = iconImageView.frame.width / 2
-        iconImageView.clipsToBounds = true
-        
-        cardView.layer.cornerRadius = 10
-        cardView.clipsToBounds = true
-        
-        backgroundColor = .clear
-        selectionStyle = .none
-        
-        nameLabel.text = viewModel.name
-        dateLabel.text = viewModel.date
-        postLabel.text = viewModel.text
-        
-        likesLabel.text = viewModel.likes
-        commentsLabel.text = viewModel.comments
-        sharesLabel.text = viewModel.shares
-        viewsLabel.text = viewModel.views
-        
-        postLabel.frame = viewModel.sizes.postLabelFrame
-        postImageView.frame = viewModel.sizes.attachmentFrame
-        bottomView.frame = viewModel.sizes.bottomViewFrame
-    
-        
-        if let photoAttachment = viewModel.photoAttachment {
-            postImageView.set(imageURL: photoAttachment.photoURLString)
-            postImageView.isHidden = false
-        } else {
-            postImageView.isHidden = true
-        }
-    }
+//    func set(viewModel: FeedCellViewModel) {
+//        iconImageView.set(imageURL: viewModel.iconURLString)
+//        
+//        iconImageView.layer.cornerRadius = iconImageView.frame.width / 2
+//        iconImageView.clipsToBounds = true
+//        
+//        cardView.layer.cornerRadius = 10
+//        cardView.clipsToBounds = true
+//        
+//        backgroundColor = .clear
+//        selectionStyle = .none
+//        
+//        nameLabel.text = viewModel.name
+//        dateLabel.text = viewModel.date
+//        postLabel.text = viewModel.text
+//        
+//        likesLabel.text = viewModel.likes
+//        commentsLabel.text = viewModel.comments
+//        sharesLabel.text = viewModel.shares
+//        viewsLabel.text = viewModel.views
+//        
+//        postLabel.frame = viewModel.sizes.postLabelFrame
+//        postImageView.frame = viewModel.sizes.attachmentFrame
+//        bottomView.frame = viewModel.sizes.bottomViewFrame
+//    
+//        
+//        if let photoAttachment = viewModel.photoAttachment {
+//            postImageView.set(imageURL: photoAttachment.photoURLString)
+//            postImageView.isHidden = false
+//        } else {
+//            postImageView.isHidden = true
+//        }
+//    }
     
 }

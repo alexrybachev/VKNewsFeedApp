@@ -49,7 +49,7 @@ class NewsfeedPresenter: NewsfeedPresentationLogic {
         
         let profile = self.profile(for: feedItem.sourceId, profiles: profiles, groups: groups)
         
-        let photoAttachment = self.photoAttachment(feedItem: feedItem)
+        let photoAttachments = self.photoAttachments(feedItem: feedItem)
         
         let date = Date(timeIntervalSince1970: feedItem.date)
         let dateTitle = dateFormatter.string(from: date)
@@ -60,7 +60,7 @@ class NewsfeedPresenter: NewsfeedPresentationLogic {
         
         // let isFullSized = revealsPostIds.contains(feedItem.postId)
         
-        let sizes = cellLayoutCalculator.sizes(postText: feedItem.text, photoAttachment: photoAttachment, isFullSizedPost: isFullSized)
+        let sizes = cellLayoutCalculator.sizes(postText: feedItem.text, photoAttachments: photoAttachments, isFullSizedPost: isFullSized)
         
         return FeedViewModel.Cell(
             postId: feedItem.postId,
@@ -72,7 +72,7 @@ class NewsfeedPresenter: NewsfeedPresentationLogic {
             comments: String(feedItem.comments?.count ?? 0),
             shares: String(feedItem.reposts?.count ?? 0),
             views: String(feedItem.views?.count ?? 0),
-            photoAttachment: photoAttachment,
+            photoAttachments: photoAttachments,
             sizes: sizes
         )
     }
@@ -98,6 +98,15 @@ class NewsfeedPresenter: NewsfeedPresentationLogic {
             width: firstPhoto.width,
             height: firstPhoto.height
         )
+    }
+    
+    private func photoAttachments(feedItem: FeedItem) -> [FeedViewModel.FeedCellPhotoAttachment] {
+        guard let attachments = feedItem.attachments else { return [] }
+        
+        return attachments.compactMap( { (attachment) -> FeedViewModel.FeedCellPhotoAttachment? in
+            guard let photo = attachment.photo else { return nil }
+            return FeedViewModel.FeedCellPhotoAttachment(photoURLString: photo.srcBIG, width: photo.width, height: photo.height)
+        })
     }
     
 }
