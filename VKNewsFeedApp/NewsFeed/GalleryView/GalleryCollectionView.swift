@@ -15,7 +15,8 @@ class GalleryCollectionView: UICollectionView {
     init() {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        super.init(frame: .zero, collectionViewLayout: layout)
+        let rowLayout = Rowlayout()
+        super.init(frame: .zero, collectionViewLayout: rowLayout)
         
         delegate = self
         dataSource = self
@@ -56,3 +57,11 @@ extension GalleryCollectionView: UICollectionViewDataSource {
 extension GalleryCollectionView: UICollectionViewDelegate {
     
 }
+
+// MARK: - UICollectionViewDelegateFlowLayout
+//extension GalleryCollectionView: UICollectionViewDelegateFlowLayout {
+//    
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        return CGSize(width: frame.width, height: frame.height)
+//    }
+//}
