@@ -21,6 +21,8 @@ class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
     
     @IBOutlet weak var table: UITableView!
     
+    private var titleView = TitleView()
+    
     
     // MARK: Setup
     
@@ -46,12 +48,15 @@ class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        setupTopBars()
         table.register(UINib(nibName: "NewsfeedCell", bundle: nil), forCellReuseIdentifier: NewsfeedCell.reuseId)
         table.register(NewsfeedCodeCell.self, forCellReuseIdentifier: NewsfeedCodeCell.reuseId)
         table.separatorStyle = .none
         table.backgroundColor = .clear
         view.backgroundColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
+        
         interactor?.makeRequest(request: .getNewsfeed)
+        interactor?.makeRequest(request: .getUser)
     }
     
     func displayData(viewModel: Newsfeed.Model.ViewModel.ViewModelData) {
@@ -59,7 +64,15 @@ class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
         case .displayNewsfeed(feedViewModel: let feedViewModel):
             self.feedViewModel = feedViewModel
             table.reloadData()
+        case .displayUser(userViewModel: let userViewModel):
+            titleView.set(userViewModel: userViewModel)
         }
+    }
+    
+    private func setupTopBars() {
+        self.navigationController?.hidesBarsOnSwipe = true
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationItem.titleView = titleView
     }
 }
 
@@ -106,7 +119,7 @@ extension NewsfeedViewController: UITableViewDelegate {
 extension NewsfeedViewController: NewsfeedCodeCellDelegate {
     
     func revealPost(for cell: NewsfeedCodeCell) {
-        print("123 delegate")
+//        print("123 delegate")
         guard let indexPath = table.indexPath(for: cell) else { return }
         let cellViewModel = feedViewModel.cells[indexPath.row]
         

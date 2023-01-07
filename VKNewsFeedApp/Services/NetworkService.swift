@@ -22,12 +22,14 @@ final class NetworkService: Networking {
     func request(path: String, params: [String: String], completion: @escaping (Data?, Error?) -> Void) {
         guard let token = authService.token else { return }
         
-        let params = ["filters": "post,photo"]
+//        let params = ["filters": "post,photo"]
         var allparams = params
         allparams["access_token"] = token
         allparams["v"] = API.version
         
         let url = url(from: path, params: allparams)
+        
+        print(url)
         
         let request = URLRequest(url: url)
         let task = createDataTask(from: request, completion: completion)

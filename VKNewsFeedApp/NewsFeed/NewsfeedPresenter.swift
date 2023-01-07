@@ -27,21 +27,16 @@ class NewsfeedPresenter: NewsfeedPresentationLogic {
     func presentData(response: Newsfeed.Model.Response.ResponseType) {
         switch response {
         case .presentNewsfeed(feed: let feed, let revealPostIds):
-            
-            print(revealPostIds)
-            
             let cells = feed.items.map { feedItem in
-                cellViewModel(
-                    from: feedItem,
-                    profiles: feed.profiles,
-                    groups: feed.groups,
-                    revealsPostIds: revealPostIds
-                )
+                cellViewModel(from: feedItem, profiles: feed.profiles, groups: feed.groups, revealsPostIds: revealPostIds)
             }
             
             let feedViewModel = FeedViewModel(cells: cells)
-            
             viewController?.displayData(viewModel: .displayNewsfeed(feedViewModel: feedViewModel))
+        
+        case .presentUserInfo(user: let user):
+            let userViewModel = UserViewModel(photoURLString: user?.photo100)
+            viewController?.displayData(viewModel: .displayUser(userViewModel: userViewModel))
         }
     }
     
