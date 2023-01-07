@@ -23,6 +23,12 @@ class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
     
     private var titleView = TitleView()
     
+    private var refreshControl: UIRefreshControl = {
+       let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        return refreshControl
+    }()
+    
     
     // MARK: Setup
     
@@ -35,7 +41,6 @@ class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
         viewController.router     = router
         interactor.presenter      = presenter
         presenter.viewController  = viewController
-//        presenter.cellLayoutCalculator = FeedCellLayoutCalculator(screenWidth: <#T##CGFloat#>)
         router.viewController     = viewController
     }
     
@@ -49,10 +54,8 @@ class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
         super.viewDidLoad()
         setup()
         setupTopBars()
-        table.register(UINib(nibName: "NewsfeedCell", bundle: nil), forCellReuseIdentifier: NewsfeedCell.reuseId)
-        table.register(NewsfeedCodeCell.self, forCellReuseIdentifier: NewsfeedCodeCell.reuseId)
-        table.separatorStyle = .none
-        table.backgroundColor = .clear
+        setupTable()
+
         view.backgroundColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
         
         interactor?.makeRequest(request: .getNewsfeed)
@@ -64,15 +67,33 @@ class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
         case .displayNewsfeed(feedViewModel: let feedViewModel):
             self.feedViewModel = feedViewModel
             table.reloadData()
+            refreshControl.endRefreshing()
         case .displayUser(userViewModel: let userViewModel):
             titleView.set(userViewModel: userViewModel)
         }
+    }
+    
+    private func setupTable() {
+        let topInset: CGFloat = 8
+        table.contentInset.top = topInset
+        
+        table.separatorStyle = .none
+        table.backgroundColor = .clear
+        
+        table.register(UINib(nibName: "NewsfeedCell", bundle: nil), forCellReuseIdentifier: NewsfeedCell.reuseId)
+        table.register(NewsfeedCodeCell.self, forCellReuseIdentifier: NewsfeedCodeCell.reuseId)
+        
+        table.addSubview(refreshControl)
     }
     
     private func setupTopBars() {
         self.navigationController?.hidesBarsOnSwipe = true
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationItem.titleView = titleView
+    }
+    
+    @objc private func refresh() {
+        interactor?.makeRequest(request: .getNewsfeed)
     }
 }
 
@@ -119,10 +140,8 @@ extension NewsfeedViewController: UITableViewDelegate {
 extension NewsfeedViewController: NewsfeedCodeCellDelegate {
     
     func revealPost(for cell: NewsfeedCodeCell) {
-//        print("123 delegate")
         guard let indexPath = table.indexPath(for: cell) else { return }
         let cellViewModel = feedViewModel.cells[indexPath.row]
-        
         interactor?.makeRequest(request: .revealPostIds(postId: cellViewModel.postId))
         
     }

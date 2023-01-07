@@ -38,7 +38,6 @@ class NewsfeedInteractor: NewsfeedBusinessLogic {
             presentFeed()
         case .getUser:
             fetcher.getUser { userResponse in
-                print(userResponse)
                 self.presenter?.presentData(response: .presentUserInfo(user: userResponse))
             }
         }
