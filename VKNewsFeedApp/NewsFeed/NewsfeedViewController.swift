@@ -73,6 +73,12 @@ class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
         }
     }
     
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if scrollView.contentOffset.y > scrollView.contentSize.height / 1.1 {
+            interactor?.makeRequest(request: .getNextBatch)
+        }
+    }
+    
     private func setupTable() {
         let topInset: CGFloat = 8
         table.contentInset.top = topInset
