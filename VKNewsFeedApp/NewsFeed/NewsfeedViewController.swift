@@ -17,11 +17,12 @@ class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
     var interactor: NewsfeedBusinessLogic?
     var router: (NSObjectProtocol & NewsfeedRoutingLogic)?
     
-    private var feedViewModel = FeedViewModel(cells: [])
+    private var feedViewModel = FeedViewModel(cells: [], footerTitle: nil)
     
     @IBOutlet weak var table: UITableView!
     
     private var titleView = TitleView()
+    private lazy var footerView = FooterView()
     
     private var refreshControl: UIRefreshControl = {
        let refreshControl = UIRefreshControl()
@@ -66,10 +67,14 @@ class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
         switch viewModel {
         case .displayNewsfeed(feedViewModel: let feedViewModel):
             self.feedViewModel = feedViewModel
+            footerView.setTitle(feedViewModel.footerTitle)
             table.reloadData()
             refreshControl.endRefreshing()
+//            footerView.setTitle(feed)
         case .displayUser(userViewModel: let userViewModel):
             titleView.set(userViewModel: userViewModel)
+        case .displayFooterLoader:
+            footerView.showLoader()
         }
     }
     
@@ -90,6 +95,7 @@ class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
         table.register(NewsfeedCodeCell.self, forCellReuseIdentifier: NewsfeedCodeCell.reuseId)
         
         table.addSubview(refreshControl)
+        table.tableFooterView = footerView
     }
     
     private func setupTopBars() {
