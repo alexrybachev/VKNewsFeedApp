@@ -37,14 +37,6 @@ final class NewsfeedCodeCell: UITableViewCell {
         return view
     }()
     
-//    let postLabel: UILabel = {
-//        let label = UILabel()
-//        label.numberOfLines = 0
-//        label.font = Constanst.postLabelFont
-//        label.textColor = .black
-//        return label
-//    }()
-    
     let postLabel: UITextView = {
        let textView = UITextView()
         textView.font = Constanst.postLabelFont
